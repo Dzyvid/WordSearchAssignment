@@ -16,10 +16,10 @@ public class wordsearch {
 			{'K', 'N', 'O', 'M', 'E', 'L'},
 	};
 	/* Directions on the Square(corners are not part of the sides 
-	 * 							but are still labeled their numbers)
-	 * 	1, 1, 1, 1, 2,
-	 * 	4, *, *, *, 2,
-	 * 	4, *, *, *, 2,
+	 * 	                    but are still labeled their numbers)
+	 *  1, 1, 1, 1, 2,
+	 *  4, *, *, *, 2,
+	 *  4, *, *, *, 2,
 	 *  4, *, *, *, 2,
 	 *  4, 3, 3, 3, 3,
 	 */
