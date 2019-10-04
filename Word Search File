@@ -1,4 +1,4 @@
-Last Update: October, 3, 2019 | 6:47 PM
+Last Update: October, 3, 2019 | 9:33 PM
 Status: Unfinished
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -439,9 +439,9 @@ public class wordsearch {
 			{
 				if (word.charAt(0) == fill[i][j])
 				{
+					fill[i][j] = '!';
 					if (i == 0 && j == 0 || i == 0 && j == grid[0].length-1)
 					{
-						fill[i][j] = '!';
 						for (int y = 0; y < 3; y++)
 						{
 							result = result || cornerCheck(word.substring(1), i, j, fill, 1);
@@ -449,7 +449,6 @@ public class wordsearch {
 					}
 					else if (i == 0 && j > 0 && j < fill[0].length-1)
 					{
-						fill[i][j] = '!';
 						for (int y = 0; y < 5; y++)
 						{
 							result = result || sideCheck(word.substring(1), i, j, fill, 1);
@@ -457,7 +456,6 @@ public class wordsearch {
 					}
 					else if (i == fill.length-1 && j > 0 && j < fill[0].length-1)
 					{
-						fill[i][j] = '!';
 						for (int y = 0; y < 5; y++)
 						{
 							result = result || sideCheck(word.substring(1), i, j, fill, 3);
@@ -465,7 +463,6 @@ public class wordsearch {
 					}
 					else if (j == 0)
 					{
-						fill[i][j] = '!';
 						for (int y = 0; y < 5; y++)
 						{
 							result = result || sideCheck(word.substring(1), i, j, fill, 4);
@@ -473,10 +470,9 @@ public class wordsearch {
 					}
 					else if (j == fill[0].length-1)
 					{
-						fill[i][j] = '!';
 						for (int y = 0; y < 5; y++)
 						{
-							result = result || sideCheck(word.substring(1), i, j, fill, 2);
+							result = result || cornerCheck(word.substring(1), i, j, fill, 3);
 						}
 					}
 					else 
@@ -494,13 +490,14 @@ public class wordsearch {
 	}
 	public static void main(String[] args)
 	{
-		System.out.println(wordMaze1("APPLE", board));
-		System.out.println(wordMaze1("PEACH", board));
-		System.out.println(wordMaze1("KIWI", board));
-		System.out.println(wordMaze1("LEMON", board));
-		System.out.println(wordMaze1("LIME", board));
-		System.out.println(wordMaze1("ORANGE", board));
-		System.out.println(wordMaze1("PINEAPPLE", board));
-		System.out.println(wordMaze1("PEAR", board));
+		System.out.println(wordMaze1("APPLE", board)); //true
+		System.out.println(wordMaze1("PEACH", board)); //true
+		System.out.println(wordMaze1("KIWI", board)); //true
+		System.out.println(wordMaze1("LEMON", board)); //true
+		System.out.println(wordMaze1("LIME", board)); //true
+		System.out.println(wordMaze1("ORANGE", board)); //true
+		System.out.println(wordMaze1("PINEAPPLE", board)); //true
+		System.out.println(wordMaze1("PEAR", board)); //true
+		System.out.println(wordMaze1("NAH", board)); //false
 	}
 }
