@@ -1,6 +1,7 @@
-Last Update: October, 3, 2019 | 9:33 PM
+Last Update: October, 3, 2019 | 9:49 PM
 Status: Unfinished
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Should be no errors now, still needs to fix some test cases
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 package Assignments;
 
@@ -16,10 +17,10 @@ public class wordsearch {
 			{'K', 'N', 'O', 'M', 'E', 'L'},
 	};
 	/* Directions on the Square(corners are not part of the sides 
-	 * 	                    but are still labeled their numbers)
-	 *  1, 1, 1, 1, 2,
-	 *  4, *, *, *, 2,
-	 *  4, *, *, *, 2,
+	 * 							but are still labeled their numbers)
+	 * 	1, 1, 1, 1, 2,
+	 * 	4, *, *, *, 2,
+	 * 	4, *, *, *, 2,
 	 *  4, *, *, *, 2,
 	 *  4, 3, 3, 3, 3,
 	 */
@@ -80,6 +81,10 @@ public class wordsearch {
 			{
 				return true && cornerCheck(word.substring(1), row+1, col+1, record, 3);
 			}
+			else if (col+1 == record[0].length-1)
+			{
+				return true && sideCheck(word.substring(1), row+1, col+1, record, 2);
+			}
 			else
 			{
 				return true && check(word.substring(1), row+1, col+1, record);
@@ -90,6 +95,10 @@ public class wordsearch {
 			if (row+1 == record.length && col-1 == 0)
 			{
 				return true && cornerCheck(word.substring(1), row+1, col-1, record, 4);
+			}
+			else if (col-1 == 0)
+			{
+				return true && sideCheck(word.substring(1), row+1, col-1, record, 4);
 			}
 			else
 			{
@@ -102,6 +111,10 @@ public class wordsearch {
 			{
 				return true && cornerCheck(word.substring(1), row-1, col+1, record, 2);
 			}
+			else if (col+1 == record[0].length)
+			{
+				return true && sideCheck(word.substring(1), row-1, col+1, record, 2);
+			}
 			else
 			{
 				return true && check(word.substring(1), row-1, col+1, record);
@@ -112,6 +125,10 @@ public class wordsearch {
 			if (row-1 == 0 && col-1 == 0)
 			{
 				return true && cornerCheck(word.substring(1), row-1, col-1, record, 1);
+			}
+			else if (col-1 == 0)
+			{
+				return true && sideCheck(word.substring(1), row-1, col-1, record, 4);
 			}
 			else
 			{
