@@ -2,7 +2,7 @@ Last Updated: October, 4, 2019 | 10:53 PM
 Progress: Unfinished
 //This is a different type of thinking, the last one's logic got too complicated so I restarted it, this has some errors of the
 //old one fixed but is still in progress so not all are done, hopefully all done by saturday
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 package Assignments;
 public class wordsearch {
 	//watch for corners and sides of grids
