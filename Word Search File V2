@@ -6,14 +6,6 @@ Progress: Unfinished
 package Assignments;
 public class wordsearch {
 	//watch for corners and sides of grids
-	/* Directions on the Square(corners are not part of the sides 
-	 * 							but are still labeled their numbers)
-	 * 	1, 5, 5, 5, 2,
-	 * 	8, *, *, *, 6,
-	 * 	8, *, *, *, 6,
-	 *  8, *, *, *, 6,
-	 *  4, 7, 7, 7, 3,
-	 */
 	public static boolean check (String word, int row, int col, char[][] grid, char[][] record)
 	{
 		record[row][col] = '!';
