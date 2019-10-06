@@ -1,5 +1,5 @@
-//Last Updated: October, 6, 2019 | 4:31 PM
-//Status: Unfinished (There is a problem with the "check" function saying it has no return statement but it looks fine to me)
+//Last Edited: October, 6, 2019 | 5:39 PM
+//Status: Basically Finished (Only "PINEAPPLES" doesn't work for some reason)
 package Assignments;
 public class wordsearch {
 	//watch for corners and sides of grids
@@ -1332,6 +1332,91 @@ public class wordsearch {
 							return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row+1, col, grid, record);
 						}
 					}
+					else if (grid[row-1][col+1] == word.charAt(0) && record[row-1][col+1] != '!') // if left, above and above right
+					{
+						if (grid[row-1][col-1] == word.charAt(0) && record[row-1][col-1] != '!') // if left, above, above right and above left
+						{
+							if (grid[row+1][col+1] == word.charAt(0) && record[row+1][col+1] != '!') // if left, above, above right, above left and below right
+							{
+								if (grid[row+1][col-1] == word.charAt(0) && record[row+1][col-1] != '!') // if left, above, above right, above left, below right and below left
+								{
+									return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row-1, col+1, grid, record) || check(word.substring(1), row-1, col-1, grid, record) || check(word.substring(1), row+1, col+1, grid, record) || check(word.substring(1), row+1, col-1, grid, record);
+								}
+								else // if left, above, above right, above left and below right
+								{
+									return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row-1, col+1, grid, record) || check(word.substring(1), row-1, col-1, grid, record) || check(word.substring(1), row+1, col+1, grid, record);
+								}
+							}
+							else if (grid[row+1][col-1] == word.charAt(0) && record[row+1][col-1] != '!') // if left, above, above right, above left and below left
+							{
+								return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row-1, col+1, grid, record) || check(word.substring(1), row-1, col-1, grid, record) || check(word.substring(1), row+1, col-1, grid, record);
+							}
+							else // if left, above, above right and above left
+							{
+								return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row-1, col+1, grid, record) || check(word.substring(1), row-1, col-1, grid, record);
+							}
+						}
+						else if (grid[row+1][col+1] == word.charAt(0) && record[row+1][col+1] != '!') // if left, above, above right and below right
+						{
+							if (grid[row+1][col-1] == word.charAt(0) && record[row+1][col-1] != '!') // if left, above, above right, below right and below left
+							{
+								return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row-1, col+1, grid, record) || check(word.substring(1), row+1, col+1, grid, record) || check(word.substring(1), row+1, col-1, grid, record);
+							}
+							else // if left, above, above right and below right 
+							{
+								return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row-1, col+1, grid, record) || check(word.substring(1), row+1, col+1, grid, record);
+							}
+						}
+						else if (grid[row+1][col-1] == word.charAt(0) && record[row+1][col-1] != '!') // if left, above, above right and below left
+						{
+							return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row-1, col+1, grid, record) || check(word.substring(1), row+1, col-1, grid, record);
+						}
+						else // if left, above and above right
+						{
+							return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row-1, col+1, grid, record);
+						}
+					}
+					else if (grid[row-1][col-1] == word.charAt(0) && record[row-1][col-1] != '!') // if left, above and above left
+					{
+						if (grid[row+1][col+1] == word.charAt(0) && record[row+1][col+1] != '!') // if left, above, above left and below right
+						{
+							if (grid[row+1][col+1] == word.charAt(0) && record[row+1][col-1] != '!') // if left, above, above left, below right and below left
+							{
+								return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row-1, col-1, grid, record) || check(word.substring(1), row+1, col+1, grid, record) || check(word.substring(1), row+1, col-1, grid, record);
+							}
+							else // if left, above, above left and below right
+							{
+								return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row-1, col-1, grid, record) || check(word.substring(1), row+1, col+1, grid, record);
+							}
+						}
+						else if (grid[row+1][col+1] == word.charAt(0) && record[row+1][col-1] != '!') // if left, above, above left and below left
+						{
+							return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row-1, col-1, grid, record) || check(word.substring(1), row+1, col-1, grid, record);
+						}
+						else // if left, above and above left
+						{
+							return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row-1, col-1, grid, record);
+						}
+					}
+					else if (grid[row+1][col+1] == word.charAt(0) && record[row+1][col+1] != '!') // if left, above and below right 
+					{
+						if (grid[row+1][col+1] == word.charAt(0) && record[row+1][col-1] != '!') // if left, above, below right and below left
+						{
+							return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row+1, col+1, grid, record) || check(word.substring(1), row+1, col-1, grid, record);
+						}
+						else // if left, above and below right
+						{
+							return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row+1, col+1, grid, record);
+						}
+					}
+					else if (grid[row+1][col+1] == word.charAt(0) && record[row+1][col-1] != '!') // if left, above and below left
+					{
+						return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row+1, col-1, grid, record);
+					}
+					else // if left and above
+					{
+						return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row-1, col, grid, record);
+					}
 				}
 				else if (grid[row+1][col] == word.charAt(0) && record[row+1][col] != '!') // if left and below
 				{
@@ -2247,7 +2332,14 @@ public class wordsearch {
 				{'I', 'N', 'A', 'B', 'I', 'H'},
 				{'K', 'N', 'O', 'M', 'E', 'L'},
 		};
-		System.out.println(wordMaze1("APPLE", board));
-		System.out.println(wordMaze1("PEACH", board)); //true
+		System.out.println(wordMaze1("APPLES", board));
+		System.out.println(wordMaze1("PEACH", board));
+		System.out.println(wordMaze1("KIWI", board));
+		System.out.println(wordMaze1("LEMON", board));
+		System.out.println(wordMaze1("LIME", board));
+		System.out.println(wordMaze1("ORANGE", board));
+		System.out.println(wordMaze1("PINEAPPLES", board));
+		System.out.println(wordMaze1("PEAR", board));
+		System.out.println(wordMaze1("NAH", board));
 	}
 }
