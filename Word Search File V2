@@ -1,5 +1,5 @@
-//Last Edited: October, 6, 2019 | 6:43 PM
-//Status: Finished (Hooray)
+// Last Updated: October, 6, 2019 | 7:18 PM
+// Status: Finished(with a small bug that I might look into if I'm still sane enough)
 package Assignments;
 public class wordsearch {
 	//watch for corners and sides of grids
@@ -567,7 +567,7 @@ public class wordsearch {
 					{
 						return check(word.substring(0), row, col+1, grid, record) || check(word.substring(0), row-1, col+1, grid, record);
 					}
-					else
+					else // if none
 					{
 						for (int i = 0; i < grid.length; i++)
 						{
@@ -759,7 +759,7 @@ public class wordsearch {
 				{
 					return check(word.substring(1), row+1, col, grid, record) || check(word.substring(1), row+1, col+1, grid, record);
 				}
-				else
+				else // if below
 				{
 					return true && check(word.substring(1), row+1, col, grid, record);
 				}
@@ -2422,6 +2422,11 @@ public class wordsearch {
 				{'I', 'N', 'A', 'B', 'I', 'H'},
 				{'K', 'N', 'O', 'M', 'E', 'L'},
 		};
+		char[][] dim = {
+				{'B', 'X', 'T'},
+				{'R', 'A', 'G'},
+				{'A', 'G', 'E'},
+		};
 		System.out.println(wordMaze1("APPLES", board)); // true
 		System.out.println(wordMaze1("PEACH", board)); // true
 		System.out.println(wordMaze1("KIWI", board)); // true
@@ -2433,5 +2438,10 @@ public class wordsearch {
 		System.out.println(wordMaze1("NAH", board)); // false
 		System.out.println(wordMaze1("GARO", board)); // true
 		System.out.println(wordMaze1("LEMONADE", board)); // false
+		System.out.println(wordMaze1("GARAGE", dim)); // true
+		System.out.println(wordMaze1("BAT", dim)); // true
+		System.out.println(wordMaze1("RAT", dim)); // true
+		System.out.println(wordMaze1("GARAT", dim)); // true
+		System.out.println(wordMaze1("TAAE", dim)); // false
 	}
 }
