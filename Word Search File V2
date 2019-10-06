@@ -1,5 +1,5 @@
-//Last Edited: October, 6, 2019 | 5:39 PM
-//Status: Basically Finished (Only "PINEAPPLES" doesn't work for some reason)
+//Last Edited: October, 6, 2019 | 6:43 PM
+//Status: Finished (Hooray)
 package Assignments;
 public class wordsearch {
 	//watch for corners and sides of grids
@@ -53,6 +53,13 @@ public class wordsearch {
 				}
 				else // if none
 				{
+					for (int i = 0; i < grid.length; i++)
+					{
+						for (int j = 0; j < grid.length; j++)
+						{
+							record[i][j] = ' ';
+						}
+					}
 					return false;
 				}
 			}
@@ -97,6 +104,13 @@ public class wordsearch {
 				}
 				else // if none
 				{
+					for (int i = 0; i < grid.length; i++)
+					{
+						for (int j = 0; j < grid.length; j++)
+						{
+							record[i][j] = ' ';
+						}
+					}
 					return false;
 				}
 			}
@@ -273,6 +287,13 @@ public class wordsearch {
 				}
 				else // if none
 				{
+					for (int i = 0; i < grid.length; i++)
+					{
+						for (int j = 0; j < grid.length; j++)
+						{
+							record[i][j] = ' ';
+						}
+					}
 					return false;
 				}
 			}
@@ -320,6 +341,13 @@ public class wordsearch {
 				}
 				else // if none
 				{
+					for (int i = 0; i < grid.length; i++)
+					{
+						for (int j = 0; j < grid.length; j++)
+						{
+							record[i][j] = ' ';
+						}
+					}
 					return false;
 				}
 			}
@@ -364,6 +392,13 @@ public class wordsearch {
 				}
 				else // if none
 				{
+					for (int i = 0; i < grid.length; i++)
+					{
+						for (int j = 0; j < grid.length; j++)
+						{
+							record[i][j] = ' ';
+						}
+					}
 					return false;
 				}
 			}
@@ -454,6 +489,13 @@ public class wordsearch {
 					}
 					else
 					{
+						for (int i = 0; i < grid.length; i++)
+						{
+							for (int j = 0; j < grid.length; j++)
+							{
+								record[i][j] = ' ';
+							}
+						}
 						return false;
 					}
 				}
@@ -498,6 +540,13 @@ public class wordsearch {
 					}
 					else // if left
 					{
+						for (int i = 0; i < grid.length; i++)
+						{
+							for (int j = 0; j < grid.length; j++)
+							{
+								record[i][j] = ' ';
+							}
+						}
 						return false;
 					}
 				}
@@ -520,6 +569,13 @@ public class wordsearch {
 					}
 					else
 					{
+						for (int i = 0; i < grid.length; i++)
+						{
+							for (int j = 0; j < grid.length; j++)
+							{
+								record[i][j] = ' ';
+							}
+						}
 						return false;
 					}
 				}
@@ -540,6 +596,13 @@ public class wordsearch {
 				}
 				else // if none
 				{
+					for (int i = 0; i < grid.length; i++)
+					{
+						for (int j = 0; j < grid.length; j++)
+						{
+							record[i][j] = ' ';
+						}
+					}
 					return false;
 				}
 			}
@@ -654,6 +717,10 @@ public class wordsearch {
 					{
 						return check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row+1, col, grid, record) || check(word.substring(1), row+1, col+1, grid, record);
 					}
+					else // if above and below
+					{
+						return check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row+1, col, grid, record);
+					}
 				}
 				else if (grid[row-1][col+1] == word.charAt(0) && record[row-1][col+1] != '!') // if above and above right
 				{
@@ -666,11 +733,14 @@ public class wordsearch {
 						return check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row-1, col+1, grid, record);
 					}
 				}
-				else if (grid[row+1][col+1] == word.charAt(0) && record[row+1][col+1] != '!') // above and below right
+				else if (grid[row+1][col+1] == word.charAt(0) && record[row+1][col+1] != '!') // if above and below right
 				{
 					return check(word.substring(1), row-1, col, grid, record) || check(word.substring(1), row+1, col+1, grid, record);
 				}
-				return true && check(word.substring(1), row-1, col, grid, record);
+				else // if above
+				{
+					return true && check(word.substring(1), row-1, col, grid, record);
+				}
 			}
 			else if (grid[row+1][col] == word.charAt(0) && record[row+1][col] != '!') // if below
 			{
@@ -711,6 +781,13 @@ public class wordsearch {
 			}
 			else // if none
 			{
+				for (int i = 0; i < grid.length; i++)
+				{
+					for (int j = 0; j < grid.length; j++)
+					{
+						record[i][j] = ' ';
+					}
+				}
 				return false;
 			}
 		}
@@ -887,6 +964,13 @@ public class wordsearch {
 			}
 			else // if none
 			{
+				for (int i = 0; i < grid.length; i++)
+				{
+					for (int j = 0; j < grid.length; j++)
+					{
+						record[i][j] = ' ';
+					}
+				}
 				return false;
 			}
 		}
@@ -2287,6 +2371,13 @@ public class wordsearch {
 			}
 			else // if none
 			{
+				for (int i = 0; i < grid.length; i++)
+				{
+					for (int j = 0; j < grid.length; j++)
+					{
+						record[i][j] = ' ';
+					}
+				}
 				return false;
 			}
 		}
@@ -2314,7 +2405,6 @@ public class wordsearch {
 				{
 					if (word.charAt(0) == grid[i][j])
 					{
-						fill[i][j] = '!';
 						result = result || check(word.substring(1), i, j, grid, fill);
 					}
 				}
@@ -2332,14 +2422,16 @@ public class wordsearch {
 				{'I', 'N', 'A', 'B', 'I', 'H'},
 				{'K', 'N', 'O', 'M', 'E', 'L'},
 		};
-		System.out.println(wordMaze1("APPLES", board));
-		System.out.println(wordMaze1("PEACH", board));
-		System.out.println(wordMaze1("KIWI", board));
-		System.out.println(wordMaze1("LEMON", board));
-		System.out.println(wordMaze1("LIME", board));
-		System.out.println(wordMaze1("ORANGE", board));
-		System.out.println(wordMaze1("PINEAPPLES", board));
-		System.out.println(wordMaze1("PEAR", board));
-		System.out.println(wordMaze1("NAH", board));
+		System.out.println(wordMaze1("APPLES", board)); // true
+		System.out.println(wordMaze1("PEACH", board)); // true
+		System.out.println(wordMaze1("KIWI", board)); // true
+		System.out.println(wordMaze1("LEMON", board)); // true
+		System.out.println(wordMaze1("LIME", board)); // true
+		System.out.println(wordMaze1("ORANGE", board)); // true
+		System.out.println(wordMaze1("PINEAPPLES", board)); // true
+		System.out.println(wordMaze1("PEAR", board)); // true
+		System.out.println(wordMaze1("NAH", board)); // false
+		System.out.println(wordMaze1("GARO", board)); // true
+		System.out.println(wordMaze1("LEMONADE", board)); // false
 	}
 }
