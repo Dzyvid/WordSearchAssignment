@@ -1,41 +1,137 @@
-package wordMaze;
-import java.io.*;
-import java.util.Arrays;
+// No textfile streaming required
 
-public class wordMaze2 {
-	public static void getMaze() 
+public class wordMaze2
+{
+	public static boolean check (String word, int row, int col, char[][] grid, char[][] record, String dir)
 	{
-		try {
-		BufferedReader in = new BufferedReader(new FileReader("wordMaze.txt")); //change textfile name!!!!
-		String[] readinArray;
-		String readin = in.readLine();
-		if (readin == null) {
-			in.close();
+		record[row][col] = '!';
+		if (word.equals(""))
+		{
+			return true;
 		}
-		readinArray = readin.split(" ");
-		int size = readinArray.length;
-		char[][] grid = new char [size][size];
-		for(int i = 0; i < grid.length; i++) {
-			for(int j = 0; j < grid[i].length; j++) {
-				grid[i][j] = readinArray[j].charAt(0);
-				System.out.print(grid[i][j] + " "); //Don't need l8r
+		else if (dir == "") // if direction hasn't been set yet
+		{
+			if (row -1 < 0 ) // if first row
+			{
+				if (col-1 < 0) // if on first row left corner
+				{
+					if (grid[row][col+1] == word.charAt(0) && record[row][col+1] != '!') // if right
+					{
+						return true && check(word.substring(1), row, col+1, grid, record, "right");
+					}
+					else if (grid[row+1][col] == word.charAt(0) && record[row+1][col] != '!') // if below
+					{
+						return true && check(word.substring(1), row+1, col, grid, record, "down");
+					}
+					else if (grid[row+1][col+1] == word.charAt(0) && record[row+1][col+1] != '!') // if below right
+					{
+						return true && check(word.substring(1), row+1, col+1, grid, record, "right-down");
+					}
+					else // if none
+					{
+						for (int i = 0; i < grid.length; i++)
+						{
+							for (int j = 0; j < grid.length; j++)
+							{
+								record[i][j] = ' ';
+							}
+						}
+						return false;
+					}
+				}
+				else if (col+1 == grid[0].length) // if on first row right corner
+				{
+					if (grid[row][col-1] == word.charAt(0) && record[row][col-1] != '!') // if left
+					{
+						return true && check(word.substring(1), row, col-1, grid, record, "left"); 
+					}
+					else if 
+				}
+			}		
+		}
+		else if (dir == "right")
+		{
+			
+		}
+		else if (dir == "left")
+		{
+			
+		}
+		else if (dir == "up")
+		{
+			
+		}
+		else if (dir == "down")
+		{
+			
+		}
+		else if (dir == "right-up")
+		{
+			
+		}
+		else if (dir == "left-up")
+		{
+			
+		}
+		else if (dir == "right-down")
+		{
+			
+		}
+		else if (dir == "left-down")
+		{
+			
+		}
+		
+	}
+	
+	public static boolean wordMaze2 (String word, char[][] grid)
+	{
+		final char[][] fill = new char[grid.length][grid[0].length];
+		for (int i = 0; i < grid.length; i++)
+		{
+			for (int j = 0; j < grid.length; j++)
+			{
+				fill[i][j] = ' ';
 			}
-			System.out.println(""); //Don't need l8r
-			try {
-			readinArray = in.readLine().split(" ");
-			} 
-			catch(NullPointerException e) {
-				
+		}
+		boolean result = false;
+		if (word.equals(""))
+		{
+			return true;
+		}
+		else 
+		{
+			for (int i = 0; i < grid.length; i++)     
+			{                    
+				for (int j = 0; j < grid[0].length; j++)
+				{
+					if (word.charAt(0) == grid[i][j])
+					{
+						result = result || check(word.substring(1), i, j, grid, fill);
+					}
+				}
 			}
-		}
-		}
-		catch (IOException e) {
-			System.out.println("File Not Found");
+			return result;
 		}
 	}
-
-	public static void main(String[] args)
+	
+	public static void main (String[] args)
 	{
-		getMaze();
+		char[][]  board = {    
+				{'A', 'P', 'P', 'L', 'E', 'S'},
+				{'N', 'E', 'E', 'O', 'R', 'A'},
+				{'I', 'A', 'E', 'A', 'N', 'G'},
+				{'W', 'P', 'A', 'M', 'C', 'E'},
+				{'I', 'N', 'A', 'B', 'I', 'H'},
+				{'K', 'N', 'O', 'M', 'E', 'L'},
+		};
+
+		System.out.println("PEACH: " + wordMaze2("PEACH", board)); // true
+		System.out.println("KIWI: " + wordMaze2("KIWI", board)); // true
+		System.out.println("LEMON: " + wordMaze2("LEMON", board)); // true
+		System.out.println("LIME: " + wordMaze2("LIME", board)); // true
+		System.out.println("ORANGE: " + wordMaze2("ORANGE", board)); // true
+		System.out.println("PINEAPPLES: " + wordMaze2("PINEAPPLES", board)); // true
+		System.out.println("PEAR: " + wordMaze2("PEAR", board)); // true
 	}
 }
