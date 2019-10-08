@@ -1,8 +1,8 @@
-// Last Updated: October, 6, 2019 | 7:18 PM
-// Status: Finished(with a small bug that I might look into if I'm still sane enough)
+// Last Updated: October, 7, 2019
+// Status: Fixed and Finished
 package Assignments;
 public class wordsearch {
-	//watch for corners and sides of grids
+	//By: Joshua, Arunav, Wilson, David and Alden
 	public static boolean check (String word, int row, int col, char[][] grid, char[][] record)
 	{
 		record[row][col] = '!';
@@ -71,11 +71,11 @@ public class wordsearch {
 					{
 						if (grid[row+1][col-1] == word.charAt(0) && record[row+1][col-1] != '!') // if left, below and below left
 						{
-							return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row+1, col-1, grid, record);
+							return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row+1, col, grid, record) || check(word.substring(1), row+1, col-1, grid, record);
 						}
 						else // if left and below
 						{
-							return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row, col-1, grid, record);
+							return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row+1, col, grid, record);
 						}
 					}
 					else if (grid[row+1][col-1] == word.charAt(0) && record[row+1][col-1] != '!') // if left and below left
@@ -91,11 +91,11 @@ public class wordsearch {
 				{
 					if (grid[row+1][col-1] == word.charAt(0) && record[row+1][col-1] != '!') // if below and below left
 					{
-						return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row+1, col-1, grid, record);
+						return check(word.substring(1), row+1, col, grid, record) || check(word.substring(1), row+1, col-1, grid, record);
 					}
 					else // if below
 					{
-						return true && check(word.substring(1), row, col-1, grid, record);
+						return true && check(word.substring(1), row+1, col, grid, record);
 					}
 				}
 				else if (grid[row+1][col-1] == word.charAt(0) && record[row+1][col-1] != '!') // if below left
@@ -155,7 +155,7 @@ public class wordsearch {
 						}
 						else if (grid[row+1][col+1] == word.charAt(0) && record[row+1][col+1] != '!') // if left, below left and below right
 						{
-							return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row+1, col-1, grid, record);
+							return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row+1, col-1, grid, record) ||  check(word.substring(1), row+1, col+1, grid, record);
 						}
 						else // if left and below left
 						{
@@ -197,7 +197,7 @@ public class wordsearch {
 					}
 					else if (grid[row+1][col+1] == word.charAt(0) && record[row+1][col+1] != '!') // if left and below right
 					{
-						return check(word.substring(1), row+1, col+1, grid, record) || check(word.substring(1), row+1, col+1, grid, record);
+						return check(word.substring(1), row, col-1, grid, record) || check(word.substring(1), row+1, col+1, grid, record);
 					}
 					else // if left
 					{
@@ -487,7 +487,7 @@ public class wordsearch {
 					{
 						return check(word.substring(1), row-1, col, grid, record) || check(word.substring(0), row-1, col+1, grid, record);
 					}
-					else
+					else // if none
 					{
 						for (int i = 0; i < grid.length; i++)
 						{
@@ -2427,6 +2427,14 @@ public class wordsearch {
 				{'R', 'A', 'G'},
 				{'A', 'G', 'E'},
 		};
+		char[][]  dimmer = {
+                {'B', 'G', 'L', 'E', 'A', 'P'},
+                {'E', 'L', 'P', 'E', 'R', 'R'},
+                {'U', 'D', 'U', 'D', 'U', 'O'},
+                {'R', 'V', 'N', 'E', 'O', 'A'},
+                {'E', 'A', 'R', 'M', 'N', 'M'},
+                {'K', 'G', 'E', 'A', 'D', 'Y'},
+        };
 		System.out.println(wordMaze1("APPLES", board)); // true
 		System.out.println(wordMaze1("PEACH", board)); // true
 		System.out.println(wordMaze1("KIWI", board)); // true
@@ -2441,7 +2449,10 @@ public class wordsearch {
 		System.out.println(wordMaze1("GARAGE", dim)); // true
 		System.out.println(wordMaze1("BAT", dim)); // true
 		System.out.println(wordMaze1("RAT", dim)); // true
-		System.out.println(wordMaze1("GARAT", dim)); // true
+		System.out.println(wordMaze1("GARAT", dim) ); // true
 		System.out.println(wordMaze1("TAAE", dim)); // false
+		System.out.println(wordMaze1("DUEP", dimmer)); // true
+        System.out.println (wordMaze1("VAER", dimmer)); // true
+        System.out.println (wordMaze1("EPP", dimmer)); // false
 	}
 }
